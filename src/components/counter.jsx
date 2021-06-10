@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Counter extends Component {
     state = {
-        count: 0
+        value: this.props.value 
     };
 
     styles = {
@@ -10,6 +10,7 @@ class Counter extends Component {
         fontWeight: 'bold'
     };
     
+
     render() {
         /* in the ul jsx element .map maps each item in 
         the array to an individual li containing the iterated object */ 
@@ -18,25 +19,23 @@ class Counter extends Component {
           <span style = {this.styles} className= {this.counterClassName()}>
             {this.formatCount()}
           </span>
-          <button  onClick = {this.addCount()}className= 'btn btn-secondary btn-sm'>Increment</button>
+          <button  onClick = {this.addCount}className= 'btn btn-secondary btn-sm'>Increment</button>
         </React.Fragment>
         );
     }
 
     formatCount(){
-        const { count }  = this.state;
-        return count === 0 ? 'zero' : count;
+        const { value }  = this.state;
+        return value === 0 ? 'zero' : value;
     }
 
-    addCount(){
-        //const {count} = this.state;
-        //count++
-        console.log('yes')
+    addCount = () => {
+        this.setState({value: this.state.value + 1})
     }
 
     counterClassName(){
         let className = 'badge m-2 badge-'
-        className += (this.state.count === 0) ? 'warning' : 'primary'
+        className += (this.state.value === 0) ? 'warning' : 'primary'
         return className
     }
 }

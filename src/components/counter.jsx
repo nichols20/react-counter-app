@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 
 class Counter extends Component {
     state = {
-        count: 0,
-        tags: ['tag1','tag2','tag3']
+        count: 0
     };
 
     styles = {
@@ -19,10 +18,7 @@ class Counter extends Component {
           <span style = {this.styles} className= {this.counterClassName()}>
             {this.formatCount()}
           </span>
-          <button className= 'btn btn-secondary btn-sm'>Increment</button>
-          <ul>
-              {this.state.tags.map(tag => <li>{tag}</li>)}
-          </ul>
+          <button  onClick = {this.addCount()}className= 'btn btn-secondary btn-sm'>Increment</button>
         </React.Fragment>
         );
     }
@@ -32,9 +28,15 @@ class Counter extends Component {
         return count === 0 ? 'zero' : count;
     }
 
+    addCount(){
+        //const {count} = this.state;
+        //count++
+        console.log('yes')
+    }
+
     counterClassName(){
         let className = 'badge m-2 badge-'
-        className += (this.state.count === 0)? 'warning' : 'primary'
+        className += (this.state.count === 0) ? 'warning' : 'primary'
         return className
     }
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Counter extends Component {
     state = {
-        value: this.props.value 
+        value: this.props.counter.value
     };
 
     styles = {
@@ -12,16 +12,18 @@ class Counter extends Component {
     
 
     render() {
-        /* in the ul jsx element .map maps each item in 
-        the array to an individual li containing the iterated object */ 
         return (
         <React.Fragment>
           <span style = {this.styles} className= {this.counterClassName()}>
             {this.formatCount()}
           </span>
           <button  onClick = {this.addCount}className= 'btn btn-secondary btn-sm'>Increment</button>
+          <button  onClick = {() => this.props.onDelete(this.props.counter.id)} className= 'btn btn-danger btn-sm m-2'>Delete</button>
         </React.Fragment>
         );
+        //To change the state of the counters component I had to raise the onDelete event and have the counters component set the state itself
+        //I did this by passing an onclick function that equals a prop I defined in the counters component containing the argument of the id of the
+        //counter that was clicked. go to counters module for more  information.
     }
 
     formatCount(){

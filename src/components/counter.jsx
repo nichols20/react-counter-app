@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 class Counter extends Component {
-    state = {
-        value: this.props.counter.value
-    };
-
+    //Deleted state because their was no single source of truth for a reset button to be operable
+    //this counter component has now transformed into a controlled component which is a component 
+    //that doesn't contain a local state, receives all its data through props then if need be
+    //raises events to change received data, Parent component handles those events.
     styles = {
         fontSize: 20,
         fontWeight: 'bold'
@@ -17,7 +17,7 @@ class Counter extends Component {
           <span style = {this.styles} className= {this.counterClassName()}>
             {this.formatCount()}
           </span>
-          <button  onClick = {this.addCount}className= 'btn btn-secondary btn-sm'>Increment</button>
+          <button  onClick = {() => this.props.onIncrement(this.props.counter)}className= 'btn btn-secondary btn-sm'>Increment</button>
           <button  onClick = {() => this.props.onDelete(this.props.counter.id)} className= 'btn btn-danger btn-sm m-2'>Delete</button>
         </React.Fragment>
         );
@@ -27,17 +27,13 @@ class Counter extends Component {
     }
 
     formatCount(){
-        const { value }  = this.state;
+        const { value }  = this.props.counter;
         return value === 0 ? 'zero' : value;
-    }
-
-    addCount = () => {
-        this.setState({value: this.state.value + 1})
     }
 
     counterClassName(){
         let className = 'badge m-2 badge-'
-        className += (this.state.value === 0) ? 'warning' : 'primary'
+        className += (this.props.counter.value === 0) ? 'warning' : 'primary'
         return className
     }
 }

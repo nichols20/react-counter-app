@@ -9,6 +9,14 @@ class Counter extends Component {
         fontSize: 20,
         fontWeight: 'bold'
     };
+
+    componentDidUpdate(prevProps, prevState){
+        console.log('prevProps', prevProps) 
+        console.log('prevState', prevState)
+        if (prevProps.counter.value !== this.props.counter.value){
+            
+        } 
+    }
     
 
     render() {

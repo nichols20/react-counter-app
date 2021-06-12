@@ -12,6 +12,7 @@ class Counter extends Component {
     
 
     render() {
+        console.log('counter - rendered')
         return (
         <React.Fragment>
           <span style = {this.styles} className= {this.counterClassName()}>

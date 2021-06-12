@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 //stateless functional component
 
 const NavBar = ({counters}) => {
+    console.log('NavBar - Rendered')
+
   return ( 
    <nav className="navbar navbar-light bg-light">
      <div className="container-fluid">

@@ -13,6 +13,15 @@ class App extends Component {
     ]
  }
 
+ constructor(props) {
+   super(props);
+   console.log('App - Constructor')
+ }
+
+ componentDidMount(){
+  console.log('App - Mounted')
+ }
+
  //because we deleted the state object in the counters component we have now have a single source of truth this allows us to change the value
  //of counters to 0 as shown in handleReset were as before the values would have been overriden by the child state excluding handleIncrement.
  //now that we have removed the child state we must now reitterate the handleIncrement method.
@@ -49,6 +58,7 @@ class App extends Component {
      this.setState({counters})
  }
  render(){
+   console.log('App - Rendered')
   return (
     <React.Fragment>
       <NavBar counters={this.state.counters.filter(c => c.value > 0).length}/>

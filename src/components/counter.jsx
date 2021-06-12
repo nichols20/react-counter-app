@@ -14,8 +14,12 @@ class Counter extends Component {
         console.log('prevProps', prevProps) 
         console.log('prevState', prevState)
         if (prevProps.counter.value !== this.props.counter.value){
-            
+
         } 
+    }
+
+    componentWillUnmount() {
+        console.log('counter- Unmount')
     }
     
 
